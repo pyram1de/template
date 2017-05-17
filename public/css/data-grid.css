@@ -1,0 +1,82 @@
+#adg th:focus,
+#adg a:focus {
+  outline: none; }
+
+#adg .mdl-data-table {
+  width: 100%; }
+  .mdl-data-table th {
+    cursor: pointer; }
+
+#adg .mdl-data-table tr {
+  transition: none !important; }
+
+#adg th md-select {
+  margin: 0; }
+
+#adg .md-errors-spacer {
+  display: none; }
+
+#adg ul.pagination {
+  padding: 0;
+  font-size: 0;
+  display: inline-block; }
+  #adg .pagination > li {
+    display: inline-block;
+    vertical-align: middle;
+    height: 30px;
+    border: 1px solid #ddd;
+    border-left: 0; }
+    #adg .pagination > li:first-child {
+      border-left: 1px solid #ddd;
+      border-radius: 2px 0 0 2px; }
+    #adg .pagination > li:last-child {
+      border-radius: 0 2px 2px 0; }
+  #adg .pagination a {
+    color: #444;
+    font-size: 13px;
+    padding: 0 10px;
+    line-height: 30px;
+    display: inline-block;
+    text-decoration: none; }
+  #adg .pagination .active {
+    background: #3f51b5;
+    border-color: #3f51b5; }
+    #adg .pagination .active a {
+      color: #fff; }
+  #adg .pagination-page.active {
+    background: #3f51b5; }
+    #adg .pagination-page.active a {
+      color: #fff; }
+
+#adg .material-icons, #adg .sortable span:before, #adg .sortable span:after {
+  font-family: 'Material Icons';
+  font-size: 18px;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased; }
+
+#adg .sortable span {
+  position: relative; }
+  #adg .sortable span:before {
+    content: 'arrow_drop_down';
+    position: absolute;
+    right: -18px;
+    top: -2px; }
+  #adg .sortable span:after {
+    content: 'arrow_drop_up';
+    position: absolute;
+    right: -18px;
+    top: -9px; }
+
+#adg .sortable.sort-ascent span:before {
+  display: none; }
+
+#adg .sortable.sort-ascent span:after {
+  top: -5px; }
+
+#adg .sortable.sort-descent span:before {
+  top: -5px; }
+
+#adg .sortable.sort-descent span:after {
+  display: none; }
+
+  

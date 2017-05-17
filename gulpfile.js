@@ -18,6 +18,11 @@ gulp.task('inject', function () {
     var wiredep = require('wiredep').stream;
     var inject = require('gulp-inject');
     var injectSrc = gulp.src(['./public/css/*.css',
+                              './public/lib/font-awesome/css/*.min.css',
+                              './public/lib/metrojs/release/metrojs.full/*.min.css',
+                              './public/js/**/*.js',
+                              './public/js/liveTiles.js',
+                              './public/js/demo3app.js',
                               './public/js/*.js'], {
         read: false
     });
@@ -65,21 +70,21 @@ function startBrowserSync(){
     }
 
     var options = {
-        proxy: 'localhost:' + 5000,
+        proxy: 'sp13dev-5:' + 5000,
         port: 2800,
         files: ['.src/views/*.*', './public/**/*.*','./src/views/*.ejs','**/*.*'],
         ghostMode: {
             clicks: true,
             location: true,
             forms: true,
-            scroll: true
+            scroll: false
         },
         injectChanges: true,
         logFileChanges: true,
         logLevel: 'silent', // debug, info
         logPrefix: 'browser-sync',
         notify: true,
-        reloadDelay: 1000
+        reloadDelay: 10000
     };
     browserSync(options);
 }

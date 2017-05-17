@@ -1,0 +1,75 @@
+
+<md-content md-theme="docs-dark"  >
+<div role="dialog" aria-label="Eat me!" layout="column" layout-align="center start">
+    <md-toolbar>
+        <div class="md-toolbar-tools">
+            <h2>Book A Room</h2>
+        </div>
+    </md-toolbar>
+    <div layount-margin>
+        <div layout-gt-sm="row">
+                <md-input-container>
+                    <label>Name</label>
+                    <input ng-model="demouser.name">
+                </md-input-container>
+
+                <md-input-container>
+                    <label>Assets</label>
+                    <input ng-model="user.Assets" type="email">
+                </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+            <div>
+                <md-input-container>
+                    <label>Subject</label>
+                    <input ng-model="user.subject">
+                </md-input-container>
+            </div>
+        </div>
+        <div layout-gt-sm="row">
+            <div>
+                <md-input-container>
+                    <label>Description</label>
+                    <input ng-model="user.description">
+                </md-input-container>
+            </div>
+        </div>
+        <div layout-gt-sm="row">
+            <div>
+                <md-input-container>
+                    <label>Site</label>
+                    <input ng-model="user.site">
+                </md-input-container>
+            </div>
+            <div>
+                <md-input-container>
+                    <label>Users Affected</label>
+                    <input ng-model="user.usersAffected">
+                </md-input-container>
+            </div>
+        </div>
+        <div layout-gt-sm="row">
+            <div>
+                <md-input-container>
+                    <label>Indcident Category</label>
+                    <input ng-model="user.incidentCategory">
+                </md-input-container>
+            </div>
+            <div>
+                <md-input-container>
+                    <label>Is there a WorkAround? </label>
+                    <input ng-model="user.workaround">
+                </md-input-container>
+            </div>
+        </div>
+    </div>
+  <div layout="row" class="demo-dialog-button">
+      <md-button md-autofocus flex class="md-warn" layout-align="start start" ng-click="ctrl.closeDialog()">
+      Cancel
+    </md-button>
+    <md-button md-autofocus flex class="md-primary md-raised" layout-align="start end" ng-click="ctrl.closeDialog()">
+      Submit
+    </md-button>
+  </div>
+</div>
+</md-content>

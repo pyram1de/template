@@ -1,0 +1,48 @@
+<md-toolbar md-theme="docs-dark">
+    <div class="md-toolbar-tools">
+        <h2>Catering Request</h2>
+    </div>
+</md-toolbar>
+<md-content md-theme="docs-dark">
+<form ng-submit="ctrl.closeDialog()">
+                    <md-content md-theme="docs-dark" style="padding:10px;">
+                        <div>
+                            <div layout="row">
+                                <div layout-padding flex="50">Name</div>
+                                <div layout-padding>David Hulmes</div>
+                            </div>
+                            <div layout="row">
+                                <div layout-padding flex="50">Site </div>
+                                <div layout-padding>Liverpool</div>
+                            </div>
+                            <div layout="row">
+                                <div layout-padding flex="50">Room</div>
+                                <div layout-padding>Liverpool</div>
+                            </div>
+                            <div layout="row">
+                                <div layout-padding flex="50">Date</div>
+                                <div layout-padding>1 June 2017</div>
+                            </div>
+                            <div layout="row">
+                                <div layout-padding flex="50">Time </div>
+                                <div layout-padding>12:30</div>
+                            </div>
+                            <div layout="row">
+                                <div layout-padding>Additional Information</div>
+                            </div>
+                            <div layout="row">
+                                <div layout-padding flex="50">Subject</div>
+                                <div layout-padding>special request</div>
+                            </div>
+                            <div layout="row">
+                                <div layout-padding flex="50">Description</div>
+                                <div layout-padding>plate of chips and high risk peanut allergy</div>
+                            </div>
+                        </div>
+                    </md-content>
+                    <div layout="row" class="demo-dialog-button">
+                        <md-button md-autofocus flex class="md-warn" layout-align="start start" ng-click="ctrl.closeDialog()">Cancel</md-button>
+                        <md-button md-autofocus flex class="md-warn" layout-align="start start" ng-click="ctrl.closeDialog()">Reject</md-button>
+                        <md-button md-autofocus flex type="submit" class="md-primary md-raised" layout-align="start end">Accept</md-button>
+                    </div>
+</md-content>

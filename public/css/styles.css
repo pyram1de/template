@@ -1,5 +1,588 @@
-body {
-    background: #cdeaeb;
-    color: #404040;
-    font-family: "Segoe UI WestEuropean","Segoe UI",-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+html {
+    height: 100vh;
+    padding:0;
+    margin: 0;
+    overflow: auto;
+    background-color: #424242;
 }
+
+body {
+    background: rgb(250,250,250);
+    color: #404040;
+    font-family: Roboto,Helvetica Neue,sans-serif;
+    margin:0;
+    padding:0;
+    height: 100%;
+    overflow: auto;
+    
+}
+/*
+body:after {
+    background-color: #424242;
+}
+*/
+nav {
+    float: right;
+    padding-right: 64px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    clear: right;
+}
+
+#userbox {
+    height: 20px;
+    padding: 10px;
+    float: right;
+    padding-right: 64px;
+}
+
+nav li {
+    display: block;
+    float: left;
+    height: 20px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: black;
+    color: white;
+    border-top-left-radius: 0.2em;
+    border-top-right-radius: 0.2em;
+    margin: 1px;
+    font-family: "Trebuchet MS","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 14px;
+}
+
+header {
+    margin: auto;
+}
+
+header img {
+    padding-left: 64px;
+    padding-top: 10px;
+}
+
+#headerimage {
+    float: left;
+}
+
+#headend {
+    border-top: 8px solid #c32634;
+    background-color: #d4e5ed;
+    width: 100%;
+    clear: both;
+    padding:0;
+    margin:0;
+}
+
+#headend h1 {
+    color: #c32634;
+    font-size: 42px;
+    font-weight: bold;
+    font-family: "Trebuchet MS","Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    padding-left: 64px;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    margin: 0;
+}
+
+#breadcrumbs {
+    padding-left: 64px;
+    color: rgb(68,68,68);
+}
+
+#main-content {
+    width: 100%;
+    background: none;
+    clear: both;
+    /*padding-top: 24px;*/
+}
+
+#main-content.content {
+    padding-left: 64px;
+}
+
+#li::before {
+    content: " /   ";
+}
+
+#breadcrumbs li {
+    display: block;
+    float: left;
+    padding-left: 10px;
+    font-family: "Trebuchet MS","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    font-size: 13px; 
+    cursor: pointer;
+}
+
+#home {
+    color: rgb(195,38,52);
+}
+
+.cardboard-box {
+    padding: 20px;
+    margin: 10px;
+    height: 120px;
+    width: 120px;
+    /*border: 1px solid black;*/
+    float: left;
+    cursor: pointer;
+}
+
+.cardboard-box.swatch1 {
+    background-color: lavender;
+    color: black;
+    transition: 700ms ease 750ms;
+    -webkit-transition: 700ms ease 750ms;
+}
+ 
+.cardboard-box.swatch1:hover {
+    background-color: blue;
+}
+
+.live-tile > div {
+    margin: 0;
+    width: 100%;
+    display: block;
+}
+
+.live-tile > div > i {
+    padding-left:25%;
+    padding-top:25%;
+    display:block;
+}
+
+.live-tile > div > p {
+    padding-top: 55%;
+}
+
+.live-tile {
+    cursor: pointer;
+}
+
+.view-animate {
+  opacity: 1;
+  /*position:absolute;*/
+  /*border-left:1px solid black;*/
+  display:block;
+  width:100%;
+}
+
+.view-animate.ng-enter {
+  transition:opacity ease-in-out 250ms 100ms;
+  opacity: 0;
+}
+
+.view-animate.ng-leave {
+  transition:opacity ease-in-out 100ms;
+  opacity: 1;
+}
+
+.view-animate.ng-enter {
+  opacity: 0;
+}
+.view-animate.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+.view-animate.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 20; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+.modal-header {
+    background: linear-gradient(rgba(0,0,0,0.1),white,rgba(0,0,0,0.1));
+    width:100%;
+    padding:0;
+    margin:0;
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+
+.modal-content::before, .modal-content::after {
+    content:"";
+    display:table;
+}
+.modal-content::after {
+    clear:both;
+}
+.modal-content {
+    zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.full-input-box {
+    width: 100%;
+    padding:0;
+    margin:0;
+    clear: both;
+}
+
+.full-input-box > .label {
+    margin:0;
+    padding:0;
+    width: 25%;
+    float: left;
+}
+
+.full-input-box > .input {
+    margin:0;
+    padding:0;
+    width: 75%;
+    float: left;
+}
+
+.half-input-box {
+    float: left;
+    width: 50%;
+}
+
+.input-container {
+    width: 100%;
+    display: block;
+    clear: both;
+}
+
+.half-input-box > .input {
+    height: 40px;
+    float: left;
+    width: 50%;
+    padding:0;
+    margin:0;
+}
+
+.half-input-box > .label {
+    height: 40px;
+    width: 50%;
+    float: left;
+    padding:0;
+    margin:0;
+    clear:left;
+}
+
+.modal-footer {
+    clear: both;
+    display: block;
+    width: 100%;
+}
+
+.demo-md-panel {
+  min-height: 500px;
+}
+
+.demo-dialog-example {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+      0 13px 19px 2px rgba(0, 0, 0, 0.14),
+      0 5px 24px 4px rgba(0, 0, 0, 0.12);
+  min-width: 500px;
+  width: 600px;
+  max-width: 50%;
+}
+
+.demo-dialog-content {
+  padding: 0 15px;
+  width: 100%;
+}
+
+.demo-dialog-content img {
+  height: 300px;
+  margin: auto;
+}
+
+.demo-dialog-button {
+  width: 100%;
+}
+
+.demo-menu-example {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 7px 8px -4px rgba(0, 0, 0, 0.2),
+      0 13px 19px 2px rgba(0, 0, 0, 0.14),
+      0 5px 24px 4px rgba(0, 0, 0, 0.12);
+  width: 256px;
+}
+
+.demo-menu-item {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 48px;
+  padding: 0 16px;
+  position: relative;
+  transition: background 0.15s linear;
+  width: auto;
+}
+
+.demo-menu-item:hover,
+.demo-menu-item:focus {
+  background-color: rgb(238, 238, 238);
+}
+
+.demo-menu-item.selected {
+  color: rgb(16, 108, 200);
+}
+
+
+  .inputdemoIcons .inputIconDemo {
+    min-height: 48px; }
+  .inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.email {
+    color: green; }
+  .inputdemoIcons md-input-container:not(.md-input-invalid) > md-icon.name {
+    color: dodgerblue; }
+  .inputdemoIcons md-input-container.md-input-invalid > md-icon.email,
+  .inputdemoIcons md-input-container.md-input-invalid > md-icon.name {
+    color: red; }
+/*
+.md-panel-outer-wrapper {
+    min-height: 1000px;
+    overflow: hidden;
+}*/
+
+
+.new-in {
+    background-color: #97c285;
+}
+.new-in::selection {
+    background-color: #97c285;
+}
+.new-in::hover {
+    background-color: #97c285 !important; 
+}
+.in-progress {
+    background-color: #d2d2ff;
+}
+
+.reaching-sla {
+    background-color: #e0d39e
+}
+
+.breached-sla {
+    background-color:#d78282;
+}
+
+.animate-show-hide.ng-hide {
+    opacity: 0;
+}
+
+.animate-show-hide.ng-hide-add,
+.animate-show-hide.ng-hide-remove {
+    transition: all linear 0.5s;
+}
+
+.modalPanel {
+    opacity: 1;
+}
+
+.check-element {
+    border: 1px solid black;
+    opacity: 1;
+    padding: 10px;
+}
+
+.dialogdemoBasicUsage #popupContainer {
+  position: relative; }
+
+.dialogdemoBasicUsage .footer {
+  width: 100%;
+  text-align: center;
+  margin-left: 20px; }
+
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+  font-size: 0.8em;
+  margin-top: 50px; }
+
+.dialogdemoBasicUsage button {
+  width: 200px; }
+
+.dialogdemoBasicUsage div#status {
+  color: #c60008; }
+
+.dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
+  margin-bottom: 0; }
+
+.ussModal {
+    min-width: 715px;
+    font-family: Roboto,Helvetica Neue,sans-serif;
+    /*
+    font-size: 1.6rem;*/
+    line-height: 1.4;
+}
+/*
+    this sorts out the padding that is introduced when there
+    is no validation on an input form.
+*/
+md-input-container .md-errors-spacer {
+    min-height: 0;
+}
+
+/*
+ fixes the look of the date picker
+ https://github.com/angular/material/issues/9550
+
+
+ .date-picker {
+    padding-right : 18px;
+    height        : 58px !important;
+    margin-top    : 8px !important;
+}
+
+.date-picker md-datepicker .md-datepicker-input-container .md-datepicker-expand-triangle {
+                border-left  : 4px solid transparent;
+                border-right : 4px solid transparent;
+                border-top   : 4px solid;
+            }
+
+.md-input-messages-animation .md-input-message-animation {
+            opacity     : 1;
+            margin-top  : 6px !important;
+            margin-left : 34px !important;
+        }
+        .date-picker label {
+        left  : 33px !important;
+        right : 0 !important;
+        width : calc(100% - 33px) !important;
+    }
+
+.date-picker md-datepicker {
+        display     : inline-block;
+        width       : 100%;
+        margin-left : 26px;
+        height      : 0;
+}
+
+.date-picker md-datepicker .md-datepicker-button {
+            float       : left;
+            margin-top  : -12.5px;
+            margin-left : -33px;
+        }
+
+.date-picker md-datepicker .md-datepicker-input-container {
+            width : 100%;
+            top   : -14px;
+            right : 17px;
+}
+
+.date-picker md-datepicker .md-datepicker-input-container .md-datepicker-input {
+                max-width : 100% !important;
+                min-width : 100% !important;
+            }
+*/
+
+.md-datepicker-input-container {
+    min-width: 250px;
+}
+
+@media screen and (min-width:0\0) {
+    
+.md-datepicker-triangle-button {
+    right: 14px;
+}
+
+}
+
+.inputdemoErrorsAdvanced {
+  /* NOTE: Check the demo's HTML to see some additional RTL support CSS */
+  /* Setup animations similar to the ng-messages */ }
+  .inputdemoErrorsAdvanced .hint {
+    /* Position the hint */
+    position: absolute;
+    left: 2px;
+    right: auto;
+    bottom: 7px;
+    /* Copy styles from ng-messages */
+    font-size: 12px;
+    line-height: 14px;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
+    /* Set our own color */
+    color: grey; }
+  .inputdemoErrorsAdvanced .hint.ng-hide,
+  .inputdemoErrorsAdvanced .hint.ng-enter,
+  .inputdemoErrorsAdvanced .hint.ng-leave.ng-leave-active {
+    bottom: 26px;
+    opacity: 0; }
+  .inputdemoErrorsAdvanced .hint.ng-leave,
+  .inputdemoErrorsAdvanced .hint.ng-enter.ng-enter-active {
+    bottom: 7px;
+    opacity: 1; }
+
+@keyframes shrink {
+    from {transform: scaleY(1);}
+    to {transform: scaleY(0);}
+}    
+
+@keyframes expand {
+    from {transform: scaleY(0);}
+    to {transform: scaleY(1);}
+}    
+
+.uss-fade-out {
+    animation-name: shrink;
+    animation-duration: 0.7s;
+    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+}
+
+.uss-fade-in {
+    animation-name: expand;
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+}
+
+/*
+@keyframes shrink {
+    from {max-height: 750px;}
+    to {max-height: 0px;}
+}    
+
+@keyframes expand {
+    from {max-height: 0px;}
+    to {max-height: 750px;}
+}    
+
+.uss-fade-out {
+    max-height: 0px;
+    animation-name: shrink;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+}
+
+.uss-fade-in {
+    max-height: 750px;
+    animation-name: expand;
+    animation-duration: 0.5s;
+    animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+}*/

@@ -1,0 +1,85 @@
+<md-toolbar md-theme="docs-dark" class="md-primary">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()" ng-disabled="false">
+            <md-icon md-svg-icon="images/icons/ic_menu_black_24px.svg"></md-icon>
+        </md-button>
+        <h2 flex md-truncate>Dasboard</h2>
+        <md-menu md-position-mode="target-right target">
+            <md-button class="md-icon-button" aria-label="More" ng-click="$mdMenu.open($event)">
+                <md-icon md-menu-origin md-svg-icon="images/icons/ic_more_vert_black_24px.svg"></md-icon>
+            </md-button>
+        </md-menu>
+    </div>
+</md-toolbar>
+<md-content layout="row" flex>
+    <div layout="row" flex="100">
+        <md-card flex="50">
+            <img ng-src="/images/lettuce.jpg" class="md-card-image" alt="Washed Out">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Catering Nearing SLA</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <h1>6</h1>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <img ng-src="/images/lettuce.jpg" class="md-card-image" alt="Washed Out">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">New In</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <h1>3</h1>
+                
+            </md-card-content>
+            <md-list>
+                    <md-divider></md-divider>
+                    <md-list-item class="md-3-line"  ng-click="openCateringModal(item)">
+                        <div class="md-list-item-text">
+            <h3>David Hulmes</h3>
+            <p>Secondary text</p>
+          </div>
+                    </md-list-item>
+                    <md-divider></md-divider>
+                    <md-list-item class="md-3-line"  ng-click="openCateringModal(item)">
+                        <div class="md-list-item-text">
+            <h3>David Hulmes</h3>
+            <p>Secondary text</p>
+          </div>
+                    </md-list-item> 
+                    <md-divider></md-divider>
+                    <md-list-item class="md-3-line"  ng-click="openCateringModal(item)">
+                        <div class="md-list-item-text">
+            <h3>David Hulmes</h3>
+            <p>Secondary text</p>
+          </div>
+                    </md-list-item>
+                </md-list>
+        </md-card>
+        <md-card>
+            <img ng-src="/images/chart1.png" class="md-card-image" alt="Washed Out">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">Work allocated</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>Chart to show work split out by person</p>
+            </md-card-content>
+        </md-card>
+        <md-card>
+            <img ng-src="/images/chart2.png" class="md-card-image" alt="Washed Out">
+            <md-card-title>
+                <md-card-title-text>
+                    <span class="md-headline">This Weeks Current Status</span>
+                </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>chart to show current state of catering items in the last week</p>
+            </md-card-content>
+        </md-card>
+    </div>
+</md-content>

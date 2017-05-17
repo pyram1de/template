@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <meta http-equiv="x-ua-compatible" content="IE=Edge" />
+        <!--bower:css-->
+        <link rel="stylesheet" href="/lib/textAngular/dist/textAngular.css" />
+        <link rel="stylesheet" href="/lib/angular-material/angular-material.css" />
+        <link rel="stylesheet" href="/lib/material-design-lite/material.min.css" />
+        <!--endbower-->
+        <!-- bower:js -->
+        <script src="/lib/angular/angular.js"></script>
+        <script src="/lib/angular-route/angular-route.js"></script>
+        <script src="/lib/jquery/dist/jquery.js"></script>
+        <script src="/lib/metrojs/release/MetroJs.Full/MetroJs.js"></script>
+        <script src="/lib/angular-animate/angular-animate.js"></script>
+        <script src="/lib/rangy/rangy-core.js"></script>
+        <script src="/lib/rangy/rangy-classapplier.js"></script>
+        <script src="/lib/rangy/rangy-highlighter.js"></script>
+        <script src="/lib/rangy/rangy-selectionsaverestore.js"></script>
+        <script src="/lib/rangy/rangy-serializer.js"></script>
+        <script src="/lib/rangy/rangy-textrange.js"></script>
+        <script src="/lib/textAngular/dist/textAngular.js"></script>
+        <script src="/lib/textAngular/dist/textAngular-sanitize.js"></script>
+        <script src="/lib/textAngular/dist/textAngularSetup.js"></script>
+        <script src="/lib/angular-aria/angular-aria.js"></script>
+        <script src="/lib/angular-messages/angular-messages.js"></script>
+        <script src="/lib/angular-material/angular-material.js"></script>
+        <script src="/lib/angular-data-grid/dist/pagination.js"></script>
+        <script src="/lib/angular-data-grid/dist/dataGrid.js"></script>
+        <script src="/lib/material-design-lite/material.min.js"></script>
+        <script src="/lib/moment/moment.js"></script>
+        <!-- endbower -->
+        <!-- inject:css-->
+        <link rel="stylesheet" href="/css/data-grid.css">
+        <link rel="stylesheet" href="/css/newStyles.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/lib/metrojs/release/metrojs.full/MetroJs.min.css">
+        <!-- endinject-->
+        <!--inject:js-->
+        <script src="/js/demo.js"></script>
+        <script src="/js/liveTiles.js"></script>
+        <script src="/js/skel.min.js"></script>
+        <script src="/js/uss_angular_service.js"></script>
+        <script src="/js/uss_webapi.js"></script>
+        <script src="/js/util.js"></script>
+        <script src="/js/demo2/app.js"></script>
+        <script src="/js/demo2/mainController.js"></script>
+        <script src="/js/demo2/modalController.js"></script>
+        <script src="/js/demo3/app.js"></script>
+        <script src="/js/demo3/mainController.js"></script>
+        <script src="/js/demo3/ModalController.js"></script>
+        <!--endinject-->
+		<!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+<meta charset="UTF-8">
+<title>Template</title>
+</head>
+<body>
+        <header>
+        <div id="headerimage"><img src="/images/uss-inside-logo.png" alt="USS Inside"></div>
+        <div id="userbox">David Hulmes</div>
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>Our Organisation</li>
+                <li>Business Areas</li>
+                <li>HR</li>
+                <li>Operational Information</li>
+                <li>Resources</li>
+                <li>Social</li>
+            </ul>
+        </nav>
+    </header>
+    
+    
+    <div id="headend">
+        <h1>Facilities</h1> 
+    </div> <!-- #headend -->
+    <div id="breadcrumbs">
+    <ul><li><b id="home" class="fa fa-home"></b></li><li id="li">Facilities</li></ul>
+    </div>
+    <div id="main-content" ng-app="demo2">
+        <div class="content" ng-controller="MainController">
+        <!-- Wrapper -->
+        <div ng-view  class="view-animate"></div>
+		<!-- Scripts -->
+			<!--<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>-->
+			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
+			<!--<script src="assets/js/main.js"></script>-->
+        </div>
+    </div>
+</body>
+
+</html> 

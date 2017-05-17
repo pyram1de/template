@@ -1,0 +1,309 @@
+   <md-toolbar md-theme="docs-dark" class="md-primary">
+    <div class="md-toolbar-tools">
+        <md-button class="md-icon-button" aria-label="Settings" ng-click="toggleLeft()" ng-disabled="false">
+          <md-icon md-svg-icon="images/icons/ic_menu_black_24px.svg"></md-icon>
+        </md-button>
+        <h2 flex md-truncate>Catering</h2>
+        <md-menu md-position-mode="target-right target" >
+            <md-button class="md-icon-button" aria-label="More" ng-click="$mdMenu.open($event)">
+                <md-icon  md-menu-origin md-svg-icon="images/icons/ic_more_vert_black_24px.svg"></md-icon>
+            </md-button>
+            <md-menu-content width="3">
+                <md-menu-item>
+                    <md-button ng-click=""> <span md-menu-align-target>Export to CSV</span></md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="toggleRight()"> <span md-menu-align-target>Dashboard Items</span></md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+      </div>
+   </md-toolbar>
+   
+    <md-sidenav md-theme="docs-dark"  class="md-sidenav-left md-whiteframe-4dp" md-component-id="left"
+                md-disable-backdrop md-whiteframe="4">
+
+      <md-toolbar class="md-theme-indigo">
+        <h1 class="md-toolbar-tools">Navigation Menu</h1>
+      </md-toolbar>
+      <md-list>
+          <md-list-item  ng-click="openDashboard()">
+          <h4>Dashboard</h4>
+        </md-list-item>
+      </md-list>
+      <md-content layout-margin>
+        <p>
+          This sidenav is not showing any backdrop, where users can click on it, to close the sidenav.
+        </p>
+        <md-button ng-click="toggleLeft()" class="md-accent">
+          Close this Sidenav
+        </md-button>
+      </md-content>
+    </md-sidenav>
+        <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Available Dashboard Cards</h1>
+      </md-toolbar>
+      <md-content md-theme="docs-dark" layout-padding>
+        <md-card>
+        <img ng-src="/images/lettuce.jpg" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Catering Nearing SLA</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+        <h1> 6</h1>
+          <p>
+            Displays the total number of items for catering that are nearing SLA
+          </p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Add To Dashboard</md-button>
+        </md-card-actions>
+      </md-card>
+      <md-content md-theme="docs-dark" layout-padding>
+        <md-card>
+        <img ng-src="/images/lettuce.jpg" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">New In</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <h1>7</h1>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Add To Dashboard</md-button>
+        </md-card-actions>
+      </md-card>
+    <md-card>
+            <img ng-src="/images/chart1.png" class="md-card-image" alt="Washed Out">
+            <md-card-title>
+            <md-card-title-text>
+                <span class="md-headline">Work allocated</span>
+            </md-card-title-text>
+            </md-card-title>
+            <md-card-content>
+                <p>Chart to show work split out by person</p>
+            </md-card-content>
+            <md-card-actions layout="row" layout-align="end center">
+            <md-button>Add To Dashboard</md-button>
+            </md-card-actions>
+        </md-card>
+    <md-card>
+        <img ng-src="/images/chart2.png" class="md-card-image" alt="Washed Out">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">This Weeks Current Status</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content>
+            <p>chart to show current state of catering items in the last week</p>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end center">
+          <md-button>Add To Dashboard</md-button>
+        </md-card-actions>
+      </md-card>
+        <md-button ng-click="closeRight()" class="md-primary">
+          Close Sidenav Right
+        </md-button>
+      </md-content>
+      </md-sidenav>
+   <md-content md-theme="docs-dark" id="adg" layout-padding layout="row" layout-align="center">
+        <div flex-gt-md="90" flex-md="90" flex-xs="100">
+            <div layout-gt-xs="row" layout-xs="column" layout-align="stretch center">
+                <div  layout="row" layout-align="center start">
+                    <md-input-container md-no-float md-is-error="false" class="md-block flex-gt-xs flex-xs">
+                        <input ng-model="reference"
+                               class="md-input"
+                               ng-change="gridActions.filter()"
+                               id="id"
+                               placeholder="Search by Id #"
+                               filter-by="reference"
+                               filter-type="text"
+                               aria-disabled="true"
+                               aria-invalid="false">
+                    </md-input-container>
+                </div>
+                <div  layout="row" layout-align="start center">
+                    <md-datepicker ng-model="dateFrom"
+                                   flex="100"
+                                   md-placeholder="From Date"
+                                   is-open="dateFromOpened"
+                                   ng-click="dateFromOpened = true"
+                                   filter-by="created"
+                                   filter-type="dateFrom"
+                                   ng-change="gridActions.filter()"></md-datepicker>
+                </div>
+                <div  layout="row" layout-align="start center">
+                    <md-datepicker ng-model="dateTo"
+                                   flex="100"
+                                   md-placeholder="To Date"
+                                   is-open="dateToOpened"
+                                   ng-click="dateToOpened = true"
+                                   filter-by="placed"
+                                   filter-type="dateTo"
+                                   ng-change="gridActions.filter()"></md-datepicker>
+                </div>
+            </div>
+            <div grid-data id="test" grid-options="gridOptions" grid-actions="gridActions">
+                <div layout-gt-sm="row" layout-sm="column" layout-align="center">
+                    <div flex-gt-sm="25" flex-sm="100" layout="row" layout-align="start center">
+                        <span>{{filtered.length}} items total</span>
+                    </div>
+                    <div flex-gt-sm="75" flex-xs="100">
+                        <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
+                            <grid-pagination max-size="5"
+                                             boundary-links="true"
+                                             class="pagination mdl-shadow--2dp"
+                                             ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                             total-items="paginationOptions.totalItems"
+                                             ng-model="paginationOptions.currentPage"
+                                             ng-change="reloadGrid()"
+                                             items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                            <md-input-container flex-offset-gt-xs="5" class="items-per-page">
+                                <md-select aria-disabled="true" ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                                    <md-option value="10">10</md-option>
+                                    <md-option value="25">25</md-option>
+                                    <md-option value="50">50</md-option>
+                                    <md-option value="75">75</md-option>
+                                </md-select>
+                            </md-input-container>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+                        <thead>
+                        <tr>
+                            <th sortable="reference" class="sortable mdl-data-table__cell--numeric">
+                                <span>Id #</span>
+                            </th>
+                            <th hide show-gt-md sortable="dateRequested" class="sortable">
+                                <span>Date Requested</span>
+                            </th>
+                            <th class="st-sort-disable th-dropdown">
+                                <md-select filter-by="status"
+                                           filter-type="select"
+                                           ng-model="status"
+                                           placeholder="Status"
+                                           ng-change="filter()">
+                                    <md-option value="">All Statuses</md-option>
+                                    <md-option ng-repeat="option in statusOptions track by option.value"
+                                               value="{{option.value}}">
+                                        {{option.text}}
+                                    </md-option>
+                                </md-select>
+                            </th>
+                            <th sortable="ordered" class="sortable">
+                                <span>Date Ordered</span>
+                            </th>
+                            <th sortable="orderedBy" class="sortable">
+                                <span>Ordered By</span>
+                            </th>
+                            <th class="st-sort-disable th-dropdown">
+                                <md-select filter-by="site"
+                                           filter-type="select"
+                                           ng-model="site"
+                                           placeholder="Office"
+                                           ng-change="filter()">
+                                    <md-option value="">All Offices</md-option>
+                                    <md-option ng-repeat="option in officeOptions track by option.value"
+                                               value="{{option.value}}">
+                                        {{option.text}}
+                                    </md-option>
+                                </md-select>
+                            </th>
+                            <th hide show-gt-lg class="st-sort-disable th-dropdown">
+                                <md-select filter-by="room"
+                                           filter-type="select"
+                                           ng-model="room"
+                                           placeholder="Meeting Room"
+                                           ng-change="filter()">
+                                    <md-option value="">All Rooms</md-option>
+                                    <md-option ng-repeat="option in meetingRoomOptions track by option.value"
+                                               value="{{option.value}}">
+                                        {{option.text}}
+                                    </md-option>
+                                </md-select>
+                            </th>
+                            <th sortable="required" class="sortable">
+                                <span>Date Required</span>
+                            </th>
+                            <th hide show-gt-lg>
+                                <span>Time Required</span>
+                            </th>
+                            <th class="st-sort-disable th-dropdown">
+                                <md-select filter-by="orderChoice"
+                                           filter-type="select"
+                                           ng-model="orderChoice"
+                                           placeholder="Menu Choice"
+                                           ng-change="filter()">
+                                    <md-option value="">All Menus</md-option>
+                                    <md-option ng-repeat="option in orderChoiceOptions track by option.value"
+                                               value="{{option.value}}">
+                                        {{option.text}}
+                                    </md-option>
+                                </md-select>
+                            </th>
+                            <th hide show-gt-lg sortable="orderCount" class="sortable">
+                                <span>Count</span>
+                            </th>
+                            <th hide show-gt-lg sortable="confirmedCost" class="sortable">
+                                <span>Confirmed Cost (£)</span>
+                            </th>
+                            <th>
+                                
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-class="cssClass(item)" grid-item ng-click="openCateringModal(item)">
+                            <td class="mdl-data-table__cell--numeric">
+                                <span ng-bind="item.reference"></span>
+                            </td>
+                            <td hide show-gt-md ng-bind="item.created | date:'dd/MM/yyyy'"></td>
+                            <td ng-bind="item.status"></td>
+                            <td ng-bind="item.ordered | date:'dd/MM/yyyy'"></td>
+                            <td ng-bind="item.orderedBy"></td>
+                            <td ng-bind="item.site"></td>
+                            <td hide show-gt-lg ng-bind="item.room"></td>
+                            <td ng-bind="item.required | date:'dd/MM/yyyy'"></td>
+                            <td hide show-gt-lg ng-bind="item.required | date: 'hh:mm'"></td>
+                            <td ng-bind="item.orderChoice"></td>
+                            <td hide show-gt-lg ng-bind="item.orderCount"></td>
+                            <td hide show-gt-lg ng-bind="item.confirmedCost"></td>
+                            <td>
+                                <md-icon ng-show="item.dietaryRequirements.length>0" style="color:#cf2121" md-font-icon="report_problem"><md-tooltip md-delay="750">special diatry requirements</md-tooltip> error_outline</md-icon>
+                                <md-icon ng-show="item.additionalComments.length>0" style="color:#797e18" md-font-icon=""><md-tooltip md-delay="750">additional comments</md-tooltip> comment</md-icon>
+                                <md-icon ng-show="item.adminComments.length>0" style="color:#021e9d" md-font-icon=""><md-tooltip md-delay="750">content changed</md-tooltip>create</md-icon>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div layout-xs="column" layout="row" layout-align-xs="end end" layout-align="end center">
+                    <grid-pagination max-size="5"
+                                     boundary-links="true"
+                                     class="pagination"
+                                     ng-if="paginationOptions.totalItems  > paginationOptions.itemsPerPage"
+                                     total-items="paginationOptions.totalItems"
+                                     ng-model="paginationOptions.currentPage"
+                                     ng-change="reloadGrid()"
+                                     items-per-page="paginationOptions.itemsPerPage"></grid-pagination>
+                    <md-input-container flex-offset-gt-xs="5" class="items-per-page">
+                        <md-select ng-init="paginationOptions.itemsPerPage = '10'" ng-model="paginationOptions.itemsPerPage" ng-change="reloadGrid()">
+                            <md-option value="10">10</md-option>
+                            <md-option value="25">25</md-option>
+                            <md-option value="50">50</md-option>
+                            <md-option value="75">75</md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+    </md-content>
+    <md-button aria-disabled="true" style="position: fixed; bottom: 0px; left: 0px;" md-theme="docs-dark" class="md-fab md-primary" ng-click="back()">
+        <md-icon aria-disabled="true" style="fill:white" md-svg-icon="images/icons/ic_arrow_back_black_24px.svg" ></md-icon>
+    </md-button>
