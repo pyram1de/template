@@ -229,7 +229,6 @@
                                     }
                             }
                         }
-
                         $scope.isRequired = function(){
                             for(var i = 0;i<$scope.selectedMenu.menuItemCategories.length;i++){
                                 for(var x = 0; x < $scope.selectedMenu.menuItemCategories[i].menuItems.length;x++){

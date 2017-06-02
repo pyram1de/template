@@ -20,7 +20,6 @@
             })
             catering.getSelectedMenu(vm.formData).then(function(response){
                 vm.selectedMenu = angular.copy(response);
-                console.log($scope);
             });
             vm.closeDialog = function(){
                  $mdDialog.hide();
@@ -41,7 +40,7 @@
                     if(vm.gridData[i].reference === vm.formData.reference){
                         catering.patch(vm.formData).then(function(response){
                                 vm.gridData.splice(i,1, vm.formData);
-                                vm.toggleEdit();
+                                vm.closeDialog();
                         });
                         break;
                     }
@@ -57,15 +56,13 @@
                 vm.formData.adminComments_count = vm.formData.adminComments.length;
                 for(var i=0;i<vm.gridData.length;i++){
                     if(vm.gridData[i].reference === vm.formData.reference){
-                        // splice
                         catering.patch(vm.formData).then(function(response){
                                 vm.gridData.splice(i,1, vm.formData);
-                                vm.toggleEdit();
+                                vm.closeDialog();
                         });
                         break;
                     }
                 }
-                vm.closeDialog();
             }
         }
         angular.module('privateFMS').controller('ModalController', ModalController);
