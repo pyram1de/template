@@ -1,0 +1,9 @@
+<md-input-container layout="column">
+    <label>Menu Selection</label>
+    <md-select name="menuChoice" ng-change="menuSelectionChanged()" ng-model="selectedMenuIndex" ng-required="true">
+        <md-option ng-repeat="item in menus" value="{{$index}}">{{item.shortDesc}}</md-option>
+    </md-select>
+    <div ng-messages="theForm.menuChoice.$error">
+        <div ng-message="required">This is required</div>
+    </div>
+</md-input-container>

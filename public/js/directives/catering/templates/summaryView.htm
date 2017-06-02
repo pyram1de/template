@@ -1,0 +1,50 @@
+<div layout="row">
+    <div  flex="50">Requested By</div>
+    <div >{{ussModel.createdBy}}</div>
+</div>
+<div layout="row" ng-if="ussModel.onBehalfOf">
+    <div  flex="50">On Behalf Of</div>
+    <div >{{ussModel.onBehalfOf}}</div>
+</div>
+<div layout="row">
+    <div  flex="50">Site</div>
+    <div >{{ussModel.site}}</div>
+</div>
+<div layout="row">
+    <div  flex="50">Room</div>
+    <div >{{ussModel.room}}</div>
+</div>
+<div layout="row" ng-if="orderedBy">
+    <div  flex="50">Ordered By</div>
+    <div >{{ussModel.orderedBy}}</div>
+</div>
+<div layout="row">
+    <div  flex="50">Date and Time Required</div>
+    <div >{{formatDate(ussModel.required)}} - {{formatTime(ussModel.required)}}</div>
+</div>
+<div layout="row">
+    <div flex="50">Attendees</div>
+    <div>{{ussModel.attendees}}</div>
+</div>
+<div layout="row">
+    <div flex="50">Catering Options Selected</div>
+    <div flex="50">
+        <div ng-repeat="menu in menus | filter: menuFilter">
+            <div layout="column" ng-repeat="menuCategory in menu.menuItemCategories ">
+                <div layout="row" ng-repeat="item in menuCategory.menuItems |filter:menuItemFilter">
+                    <div flex="45">{{item.shortDesc}}</div>
+                    <div> For {{item.quantity}} People</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div layout="row">
+    <div  flex="50">Special Dietary requirements</div>
+    <div >{{ussModel.dietaryRequirements}}</div>
+</div>
+<div layout="row">
+    <div  flex="50">Additional Information</div>
+    <div >{{ussModel.additionalComments}}</div>
+</div>
+</div>

@@ -19,10 +19,8 @@
         </md-menu>
       </div>
    </md-toolbar>
-   
     <md-sidenav md-theme="docs-dark"  class="md-sidenav-left md-whiteframe-4dp" md-component-id="left"
                 md-disable-backdrop md-whiteframe="4">
-
       <md-toolbar class="md-theme-indigo">
         <h1 class="md-toolbar-tools">Navigation Menu</h1>
       </md-toolbar>
@@ -147,7 +145,7 @@
                                    ng-change="gridActions.filter()"></md-datepicker>
                 </div>
             </div>
-            <div grid-data id="test" grid-options="gridOptions" grid-actions="gridActions">
+            <div grid-data id="test" grid-options="gridOptions" server-pagination="true" grid-actions="gridActions">
                 <div layout-gt-sm="row" layout-sm="column" layout-align="center">
                     <div flex-gt-sm="25" flex-sm="100" layout="row" layout-align="start center">
                         <span>{{filtered.length}} items total</span>
@@ -180,8 +178,11 @@
                             <th sortable="reference" class="sortable mdl-data-table__cell--numeric">
                                 <span>Id #</span>
                             </th>
-                            <th hide show-gt-md sortable="dateRequested" class="sortable">
+                            <th hide show-gt-md sortable="dateRequested">
                                 <span>Date Requested</span>
+                            </th>
+                            <th hide show-gt-md sortable="createdBy">
+                                <span>Requested By</span>
                             </th>
                             <th class="st-sort-disable th-dropdown">
                                 <md-select filter-by="status"
@@ -215,46 +216,10 @@
                                     </md-option>
                                 </md-select>
                             </th>
-                            <th hide show-gt-lg class="st-sort-disable th-dropdown">
-                                <md-select filter-by="room"
-                                           filter-type="select"
-                                           ng-model="room"
-                                           placeholder="Meeting Room"
-                                           ng-change="filter()">
-                                    <md-option value="">All Rooms</md-option>
-                                    <md-option ng-repeat="option in meetingRoomOptions track by option.value"
-                                               value="{{option.value}}">
-                                        {{option.text}}
-                                    </md-option>
-                                </md-select>
-                            </th>
                             <th sortable="required" class="sortable">
-                                <span>Date Required</span>
-                            </th>
-                            <th hide show-gt-lg>
-                                <span>Time Required</span>
-                            </th>
-                            <th class="st-sort-disable th-dropdown">
-                                <md-select filter-by="orderChoice"
-                                           filter-type="select"
-                                           ng-model="orderChoice"
-                                           placeholder="Menu Choice"
-                                           ng-change="filter()">
-                                    <md-option value="">All Menus</md-option>
-                                    <md-option ng-repeat="option in orderChoiceOptions track by option.value"
-                                               value="{{option.value}}">
-                                        {{option.text}}
-                                    </md-option>
-                                </md-select>
-                            </th>
-                            <th hide show-gt-lg sortable="orderCount" class="sortable">
-                                <span>Count</span>
-                            </th>
-                            <th hide show-gt-lg sortable="confirmedCost" class="sortable">
-                                <span>Confirmed Cost (£)</span>
+                                <span>Required</span>
                             </th>
                             <th>
-                                
                             </th>
                         </tr>
                         </thead>
@@ -263,21 +228,17 @@
                             <td class="mdl-data-table__cell--numeric">
                                 <span ng-bind="item.reference"></span>
                             </td>
-                            <td hide show-gt-md ng-bind="item.created | date:'dd/MM/yyyy'"></td>
+                            <td hide show-gt-md ng-bind="item.created | sugarDate"></td>
+                            <td hide show-gt-md ng-bind="item.createdBy"></td>
                             <td ng-bind="item.status"></td>
-                            <td ng-bind="item.ordered | date:'dd/MM/yyyy'"></td>
+                            <td ng-bind="item.ordered | sugarDate:'checknull'"></td>
                             <td ng-bind="item.orderedBy"></td>
                             <td ng-bind="item.site"></td>
-                            <td hide show-gt-lg ng-bind="item.room"></td>
-                            <td ng-bind="item.required | date:'dd/MM/yyyy'"></td>
-                            <td hide show-gt-lg ng-bind="item.required | date: 'hh:mm'"></td>
-                            <td ng-bind="item.orderChoice"></td>
-                            <td hide show-gt-lg ng-bind="item.orderCount"></td>
-                            <td hide show-gt-lg ng-bind="item.confirmedCost"></td>
+                            <td ng-bind="item.required | sugarDate"></td>
                             <td>
                                 <md-icon ng-show="item.dietaryRequirements.length>0" style="color:#cf2121" md-font-icon="report_problem"><md-tooltip md-delay="750">special diatry requirements</md-tooltip> error_outline</md-icon>
                                 <md-icon ng-show="item.additionalComments.length>0" style="color:#797e18" md-font-icon=""><md-tooltip md-delay="750">additional comments</md-tooltip> comment</md-icon>
-                                <md-icon ng-show="item.adminComments.length>0" style="color:#021e9d" md-font-icon=""><md-tooltip md-delay="750">content changed</md-tooltip>create</md-icon>
+                                <md-icon ng-show="item.adminComments_count>0" style="color:#021e9d" md-font-icon=""><md-tooltip md-delay="750">content changed</md-tooltip>create</md-icon>
                             </td>
                         </tr>
                         </tbody>

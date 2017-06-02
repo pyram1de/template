@@ -5,6 +5,7 @@
                     /*
                      * this will contain sharepoint calls
                     */
+                    var delay = 0;
                     var pad = function(n, width, z){
                         z = z || '0';
                         n = n + '';
@@ -27,7 +28,7 @@
                                 name: 'David Hulmes',
                                 site: 'Liverpool'
                             });
-                        }, 3000);
+                        }, delay);
                         return defer.promise;
                     }
 

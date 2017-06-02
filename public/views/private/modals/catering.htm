@@ -1,0 +1,73 @@
+<md-dialog class="ussModal">
+    <md-dialog-content md-theme="docs-dark">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>{{ctrl.formData.reference}} Catering Request - {{ctrl.formData.status}}</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="ctrl.closeDialog()">
+                    <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <div id="readOnly" class="modalPanel animate-show-hide" ng-show="!ctrl.edit">
+            <form ng-submit="ctrl.accept()">
+                <md-tabs md-dynamic-height>
+                    <md-tab>
+                        <md-tab-label>Detail</md-tab-label>
+                        <md-tab-body>
+                            <md-content md-theme="docs-dark" layout-margin layout-padding>
+                                <uss-summary-view menus="ctrl.menus" uss-model="ctrl.formData"></uss-summary-view>
+                        </md-tab-body>
+                    </md-tab>
+                    <md-tab ng-if="ctrl.formData.adminComments.length>0">
+                        <md-tab-label>History</md-tab-label>
+                        <md-tab-body>
+                            <div layout="column" layout-margin layout-padding>
+                                <div layout="column" ng-repeat="item in ctrl.formData.adminComments">
+                                    <div layout="row" layout-align="space-around start">
+                                        <div flex="15">{{item.created | sugarDate}}</div>
+                                        <div style="font-weight:bold;" flex="15">{{item.createdBy}}</div>
+                                        <div class="multiline" flex="50">{{item.comment}}</div>
+                                    </div>
+                                    <md-divider></md-divider>
+                                </div>
+                            </div>
+                        </md-tab-body>
+                    </md-tab>
+                    </md-content>
+                </md-tabs>
+                <div layout="row" layout-align="space-between">
+                    <md-button flex="nogrow" class="md-warn" layout-align="start start" ng-click="ctrl.toggleEdit()">Edit</md-button>
+                    <md-button flex="nogrow" class="md-warn" layout-align="start start" ng-click="ctrl.closeDialog()">Reject</md-button>
+                    <md-button flex="nogrow" type="submit" class="md-primary md-raised" layout-align="start end">Accept</md-button>
+                </div>
+            </form>
+        </div>
+        <div id="edit" class="modalPanel animate-show-hide" ng-show="ctrl.edit">
+            <form name="editForm" ng-submit="ctrl.update(editForm.$valid)" novalidate>
+                <md-content layout-margin md-theme="docs-dark">
+                    <div ng-if="ctrl.edit" layout="column">
+                        <uss-requested-by uss-form="editForm" uss-model="formData" layout="row"></uss-requested-by>
+                        <uss-attendees uss-form="editForm" uss-model="formData" layout="column"></uss-attendees>
+                        <uss-site-select uss-form="editForm" uss-model="formData" layout="row"></uss-site-select>
+                        <uss-menu-selection selected-menu="ctrl.selectedMenu" uss-form="editForm" uss-model="formData" menus="ctrl.menus"></uss-menu-selection>
+                        <uss-menu-choice the-form="editForm" selected-menu="ctrl.selectedMenu" uss-model="ctrl.formData" attendees="{{ctrl.formData.attendees}}"></uss-menu-choice>
+                        <uss-date-time-required uss-form="editForm" uss-model="formData" layout layout-align="space-between"></uss-date-time-required>
+                        <uss-dietary-requirements uss-form="editForm" uss-model="formData" layout="column"></uss-dietary-requirements>
+                        <uss-additional-comments uss-form="editForm" uss-model="formData" layout="column"></uss-additional-comments>
+                        <md-input-container ng-show="ctrl.edit" flex="100">
+                            <input name="adminComments" type="text" md-maxlength="250" ng-model="ctrl.adminComments" required placeholder="Comments">
+                            <div ng-messages="editForm.adminComments.$error">
+                                <div ng-message="required">This is required.</div>
+                            </div>
+                        </md-input-container>
+                    </div>
+                </md-content>
+                <div layout="row" layout-align="space-between">
+                    <md-button flex class="md-warn" layout-align="start start" ng-click="ctrl.closeDialog()">Cancel</md-button>
+                    <md-button flex type="submit" class="md-primary md-raised" layout-align="start end">Update</md-button>
+                </div>
+            </form>
+        </div>
+    </md-dialog-content>
+</md-dialog>

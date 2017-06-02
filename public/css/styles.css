@@ -586,3 +586,22 @@ md-input-container .md-errors-spacer {
     animation-duration: 0.5s;
     animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
 }*/
+
+.multiline
+{
+  white-space: pre-wrap;
+}
+
+
+uss-menu-choice md-switch {
+    margin: 0;
+}
+
+uss-menu-choice md-input-container {
+    margin: 0;
+}
+.ussMenuLabel {
+    padding-top: 8px;
+    margin-left: 6px;
+}
+

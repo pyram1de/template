@@ -1,20 +1,19 @@
 
 (function(){
-        angular.module('demo2',['ngRoute','ngAnimate','textAngular','ngMaterial','ngMessages','ussWebApi','ussAngular'])
-            .config(function($routeProvider,$mdThemingProvider,$mdDateLocaleProvider, $httpProvider){
+        angular.module('publicFMS',['ngRoute','ngAnimate','textAngular','ngMaterial',
+        'ngMessages','ussWebApi','ussAngular', 'ussDirectives',
+        'momentjs'])
+            .config(function($routeProvider,$mdThemingProvider,$mdDateLocaleProvider, $httpProvider,$mdAriaProvider){
+            $mdAriaProvider.disableWarnings();
             $routeProvider
             .when('/',{
-                templateUrl : "views/demo2_start.htm",
+                templateUrl : "views/public/home.htm",
             })
             .when('/reception', {
-                templateUrl : "views/demo2_reception.htm",
-            })
-            .when('/hns', {
-                templateUrl : 'views/hns.htm',
+                templateUrl : "views/public/reception.htm",
             });
             
             $mdDateLocaleProvider.firstDayOfWeek = 1;
-
             $mdDateLocaleProvider.formatDate  = function(date){
                 var monthNames = [
                     "January", "February", "March",

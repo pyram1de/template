@@ -1,0 +1,21 @@
+<div layout="column" layout-margin>
+        <div ng-repeat="menuCategory in selectedMenu.menuItemCategories">
+            <div layout layout-align="center none" ng-repeat="item in menuCategory.menuItems | filter: switchFilter">
+                <md-input-container flex="25" flex-gt-sm="50">
+                    <md-switch name="menuSwitch" class="md-primary" ng-change="onSwitched(item)" ng-required="isRequired()" ng-model="item.selected"
+                        aria-label="item.description">
+                        {{item.shortDesc}}
+                    </md-switch>
+                    <div ng-messages="theForm.menuSwitch.$error">
+                        <div ng-message="required">Please select at least one</div>
+                    </div>
+                </md-input-container>
+                <div class="ussMenuLabel" layout-padding>For</div>
+                <md-input-container flex="15">
+                    <input ng-required type="number" ng-change="onAmended(item)" ng-disabled="!item.selected" step="any" name="quantity" ng-model="item.quantity"
+                        min="1" max="99" ng-pattern="numberMatch" />
+                </md-input-container>
+                <div class="ussMenuLabel">People</div>
+            </div>
+        </div>
+</div>

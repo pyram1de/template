@@ -1,0 +1,15 @@
+<md-input-container flex-gt-sm="50">
+    <label>Date Required</label>
+    <md-datepicker name="required" ng-change="update()"  md-min-date="minDate" ng-model="required" required></md-datepicker>
+    <div ng-messages="theForm.required.$error">
+        <div ng-message="required">This is required</div>
+    </div>
+</md-input-container>
+<md-input-container flex-gt-sm="50">
+    <label>Time Required</label>
+    <input name="timeRequired" ng-change="update()" ng-model="timeRequired" required ng-pattern="timeRegex" type="text" />
+    <div ng-messages="theForm.timeRequired.$error">
+        <div ng-message="required">This is required</div>
+        <div ng-message="pattern">Please input a time in 24 hour format i.e. 13:30</div>
+    </div>
+</md-input-container>

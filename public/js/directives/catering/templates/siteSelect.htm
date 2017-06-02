@@ -1,0 +1,22 @@
+<md-input-container flex-gt-sm="50">
+    <label>Office</label>
+    <md-select ng-change="siteChanged()" name="site" ng-model="ussModel.site" required>
+        <md-option ng-repeat="site in sites" value="{{site.id}}">
+            {{site.name}}
+        </md-option>
+    </md-select>
+    <div ng-messages="theForm.site.$error">
+        <div ng-message="required">This is required</div>
+    </div>
+</md-input-container>
+<md-input-container flex-gt-sm="50" ng-if="rooms">
+    <label>Room</label>
+    <md-select name="room" ng-model="ussModel.room" required>
+        <md-option ng-repeat="room in rooms" value="{{room.name}}">
+            {{room.name}}
+        </md-option>
+    </md-select>
+    <div ng-messages="theForm.room.$error">
+        <div ng-message="required">This is required</div>
+    </div>
+</md-input-container>

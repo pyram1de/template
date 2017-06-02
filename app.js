@@ -7,22 +7,16 @@ app.use(express.static('public'));
 app.set('views','./src/views');
 
 app.set('view engine', 'ejs');
-app.get('/demo1', function(req, res){
-    res.render('index', {
-        place: 'world'
-    });
+app.get('/', function(req, res){
+    res.render('public');
 });
 
-app.get('/demo2', function(req, res){
-    res.render('index2', {
-        place: 'world'
-    });
+app.get('/public', function(req, res){
+    res.render('public');
 });
 
-app.get('/demo3', function(req, res){
-    res.render('index3', {
-        place: 'world'
-    });
+app.get('/private', function(req, res){
+    res.render('private');
 });
 
 app.listen(port, function(err){

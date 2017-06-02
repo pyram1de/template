@@ -5,13 +5,12 @@
                 $location.path(location);
             }
             var _mdPanel = $mdPanel;
-
             $scope.returnHome = function(){
                 $location.path('/');
             }
             
             $scope.openTaxiModal = function() {
-                };
+            };
                 
             $scope.openRoomModal = function() {
             };
@@ -20,7 +19,7 @@
                 $mdDialog.show({
                     controller: 'ModalController',
                     parent: angular.element(document.body),
-                    templateUrl: 'views/modals/catering.htm',
+                    templateUrl: 'views/public/modals/catering.htm',
                     clickOutsideToClose: false,
                     escapeToClose: false,
                     focusOnOpen: true,
@@ -30,5 +29,5 @@
                 };
         }
 
-        angular.module('demo2').controller('MainController', mainController);
+        angular.module('publicFMS').controller('MainController', mainController);
 })();

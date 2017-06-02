@@ -1,0 +1,11 @@
+<md-input-container layout="column">
+    <label>No of Attendees</label>
+    <input name="attendees" required type="number" step="any"  ng-model="ussModel.attendees" min="1" max="99" ng-pattern="numberMatch"
+    />
+    <div ng-messages="theForm.attendees.$error">
+        <div ng-message="required">This is required</div>
+        <div ng-message="min">At least 1 is required</div>
+        <div ng-message="max">Please call reception</div>
+        <div ng-message="pattern">Please enter valid characters</div>
+    </div>
+</md-input-container>

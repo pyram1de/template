@@ -1,0 +1,97 @@
+<md-dialog class="ussModal">
+    <md-dialog-content ng-cloak>
+        <div md-theme="docs-dark" role="dialog">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <h2>Catering Request</h2>
+                    <span flex></span>
+                    <md-button class="md-icon-button" ng-click="ctrl.closeDialog()">
+                        <md-icon md-svg-src="images/icons/ic_close_24px.svg" aria-label="Close dialog"></md-icon>
+                    </md-button>
+                </div>
+            </md-toolbar>
+            <md-progress-linear md-mode="indeterminate" ng-show="ctrl.running"></md-progress-linear>
+            <md-tabs md-dynamic-height  md-selected="ctrl.selectedIndex">
+                <md-tab  ng-disabled="ctrl.submited">
+                    <md-tab-label>Request Detail</md-tab-label>
+                    <md-tab-body>
+                        <md-content layout-padding>
+                        <form name="requestDetailForm" novalidate ng-submit="ctrl.next(requestDetailForm.$valid)">
+                            <div layout="column">
+                                <uss-requested-by the-form="requestDetailForm" uss-model="ctrl.formData" layout="row"></uss-requested-by>
+                                <uss-site-select the-form="requestDetailForm" uss-model="ctrl.formData" layout="row"></uss-site-select>
+                                <uss-menu-selection selected-menu="ctrl.selectedMenu" menus="ctrl.menus" the-form="requestDetailForm" uss-model="ctrl.formData"></uss-menu-selection>
+                                <uss-attendees uss-model="ctrl.formData" the-form="requestDetailForm" layout="column"></uss-attendees>
+                                <uss-date-time-required the-form="requestDetailForm" uss-model="ctrl.formData" layout layout-align="space-between"></uss-date-time-required>
+                                <div layout layout-align="space-between">
+                                    <md-button flex="nogrow" class="md-warn" ng-click="ctrl.closeDialog()">Cancel</md-button>
+                                    <md-button flex="nogrow" type="submit" class="md-primary md-raised">Next</md-button>
+                                </div>
+                            </div>
+                        </form>
+                        </md-content>
+                    </md-tab-body>
+                </md-tab>
+                <md-tab  ng-disabled="!requestDetailForm.$valid||ctrl.submited">
+                    <md-tab-label>Menu Choice</md-tab-label>
+                    <md-tab-body>
+                        <md-content layout-margin layout-padding>
+                        <form name="menuSubmissionForm" novalidate ng-submit="ctrl.next(menuSubmissionForm.$valid)">
+                            <uss-menu-choice selected-menu="ctrl.selectedMenu" the-form="menuSubmissionForm" uss-model="ctrl.formData" attendees="{{ctrl.formData.attendees}}" layout="column" layout-gt-sm="row"></uss-menu-choice>
+                            <div flex="100" layout="row" layout-align="space-between">
+                                <md-button flex="nogrow" class="md-warn" ng-click="ctrl.closeDialog()">Cancel</md-button>
+                                <md-button flex="nogrow" type="submit" class="md-primary md-raised">Next</md-button>
+                            </div>
+                        </form>
+                        </md-content>
+                    </md-tab-body>
+                </md-tab>
+                <md-tab ng-disabled="!requestDetailForm.$valid||!menuSubmissionForm.$valid||ctrl.submited">
+                    <md-tab-label>Additional Information</md-tab-label>
+                    <md-tab-body>                        
+                        <form name="addInfoForm" ng-submit="ctrl.next(addInfoForm.$valid)">
+                            <div layout="column" layout-padding layout-margin>
+                            <uss-dietary-requirements uss-model="ctrl.formData" layout="column"></uss-dietary-requirements>
+                            <uss-additional-comments uss-model="ctrl.formData" layout="column"></uss-additional-comments>
+                            </div>
+                            <div flex="100" layout="row" layout-align="space-between">
+                                <md-button flex="nogrow" class="md-warn" layout-align="start start" ng-click="ctrl.moveBack()">Back</md-button>
+                                <md-button flex="nogrow" type="submit" class="md-primary md-raised">Review</md-button>
+                            </div>
+                        </form>
+                    </md-tab-body>
+                </md-tab>
+                <md-tab ng-disabled="(!menuSubmissionForm.$valid)||(!requestDetailForm.$valid)||(!addInfoForm.$valid)||ctrl.submited">
+                    <md-tab-label>Review</md-tab-label>
+                    <md-tab-body>
+                        <form ng-submit="ctrl.save()"  >
+                            <md-content layout-padding layout-margin md-theme="docs-dark">
+                                <uss-summary-view uss-model="ctrl.formData" menus="ctrl.menus"></uss-summary-view>
+                            </md-content>
+                            <div layout="row" layout-align="space-between">
+                                <md-button flex="nogrow" class="md-warn" ng-click="ctrl.moveBack()">Back</md-button>
+                                <md-button flex="nogrow" type="submit" class="md-primary md-raised">Submit</md-button>
+                            </div>
+                        </form>
+                    </md-tab-body>
+                </md-tab>
+                <md-tab ng-disabled="true">
+                    <md-tab-label>Confirmation</md-tab-label>
+                    <md-tab-body>
+                        <md-toolbar class="md-accent md-hue-2">
+                            <div class="md-toolbar-tools">
+                                <h2>Submitted Successfully - Facilities Reference - {{ctrl.submitData.reference}}</h2>
+                            </div>
+                        </md-toolbar>
+                        <md-content layout-padding layout-margin>
+                            <div>
+                                <p>Thank you, your order has now been saved, please use the reference above if you have any
+                                    queries or wish to amend the order.</p>
+                                <uss-summary-view ng-if="ctrl.submitData" uss-model="ctrl.submitData" menus="ctrl.menus"></uss-summary-view>
+                        </md-content>
+                    </md-tab-body>
+                </md-tab>
+            </md-tabs>
+        </div>
+    </md-dialog-content>
+</md-dialog>

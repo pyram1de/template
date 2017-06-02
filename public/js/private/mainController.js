@@ -1,6 +1,6 @@
 (function () {
-    var app = angular.module('demo3');
-    app.controller('MainController', function ($scope, $location, $mdPanel, myAppFactory, $mdSidenav, ussData, $mdDialog) {
+    var app = angular.module('privateFMS');
+    app.controller('MainController', function ($scope, $location, $mdPanel, $mdSidenav, ussData, $mdDialog, catering, $timeout, $stateParams) {
         $scope.changeLocation = function (location) {
             $location.path(location);
         }
@@ -11,14 +11,37 @@
         $scope.back = function () {
             window.history.back();
         }
+        $scope.gridActions = {}
         $scope.gridOptions = {
             data: [], //required parameter - array with data
             //optional parameter - start sort options
             sort: {
-                predicate: 'companyName',
-                direction: 'asc'
+                predicate: 'id',
+                direction: 'desc'
+            },
+            urlSync: true,
+            getData: function(filter, callback){
+                if($stateParams.reference&&$stateParams.page>1){
+                    $stateParams.page=1
+                    $location.search($stateParams);
+                }
+                catering.getCateringRequests($location.$$search).then(function (response) {
+                    var data = response.d;                    
+                    var totalItems = response.totalCount;
+                    callback(data, totalItems);
+                });
             }
         };
+
+        catering.getCateringRequests($location.$$search).then(function (response) {
+            if($stateParams.reference&&$stateParams.page>1){
+                $stateParams.page=1
+                $location.search($stateParams);
+            }
+            $scope.gridOptions.data = response.d;
+            $scope.gridOptions.data.resultSize = response.totalCount;
+        });
+        
         $scope.toggleLeft = buildToggler('left');
         $scope.toggleRight = buildToggler('right');
         $scope.isOpenRight = function () {
@@ -50,21 +73,23 @@
         }
 
         $scope.openCateringModal = function (item) {
-            console.log('passing in item: ');
-            console.log(item);
             $mdDialog.show({
                     controller: 'ModalController',
                     parent: angular.element(document.body),
-                    templateUrl: 'views/modals/catering_admin.htm',
+                    templateUrl: 'views/private/modals/catering.htm',
                     clickOutsideToClose: false,
                     escapeToClose: false,
                     focusOnOpen: true,
                     controllerAs: 'ctrl',
                     bindToController: true,
                     fullscreen: true,
+                    resolve: {
+                        selectedItem : function(){
+                            return catering.get(item.reference);
+                        }
+                    },
                     locals: {
-                        selectedItem: item,
-                        gridData : $scope.gridOptions.data
+                        gridData : $scope.gridOptions.grid.filtered
                         }
                     });
         }
@@ -78,8 +103,6 @@
         $scope.openDashboard = function () {
             $location.path('/reception/private/dashboard');
         };
-        myAppFactory.getData().then(function (responseData) {
-            $scope.gridOptions.data = ussData.reparseJSON(responseData.data);
-        });
+        
     });
 })();
